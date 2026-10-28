@@ -18,6 +18,7 @@
     [...group.children].forEach((item, index) => item.style.setProperty('--reveal-delay', `${Math.min(index, 5) * 70}ms`));
   });
 
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduceMotion || !('IntersectionObserver' in window)) {
     revealTargets.forEach((section) => section.classList.add('is-visible'));
     document.querySelectorAll('.reveal-group').forEach((group) => group.classList.add('is-visible'));
