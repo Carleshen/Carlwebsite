@@ -1,5 +1,13 @@
 (() => {
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sinceElements = document.querySelectorAll('[data-since]');
+  const currentYear = new Date().getFullYear();
+  sinceElements.forEach((element) => {
+    const startYear = Number(element.dataset.since);
+    if (Number.isInteger(startYear) && startYear <= currentYear) {
+      element.textContent = String(currentYear - startYear);
+    }
+  });
+
   const revealTargets = document.querySelectorAll(
     '.capabilities, .work-section, .process-section, .about-section, .tools-section, .contact-section'
   );
